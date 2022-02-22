@@ -12,13 +12,13 @@
 	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
 	<link>./../index.html</link>
 	<description></description>
-	<lastBuildDate>Sat, 12 Feb 2022 16:29:00 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 22 Feb 2022 19:56:00 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=5.9</generator>
+	<generator>https://wordpress.org/?v=5.9.1</generator>
 
 <image>
 	<url>./../wp-content/uploads/2022/02/cropped-bobcoin512-32x32.png</url>
@@ -27,5 +27,243 @@
 	<width>32</width>
 	<height>32</height>
 </image> 
-</channel>
+	<item>
+		<title>Running a Full Node</title>
+		<link>./../running-a-full-node/index.html</link>
+					<comments>./../running-a-full-node/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 22 Feb 2022 19:56:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">./../index.html?p=420</guid>
+
+					<description><![CDATA[What is a Full Node? A full node is a program that fully validates transactions and blocks. Almost all full nodes also help the network by accepting transactions and blocks from other full nodes, validating those transactions and blocks, and then relaying them to further full nodes. Minimum Requirements Bobcoin Core full nodes have certain&#8230; <br> <a class="read-more" href="./../running-a-full-node/index.html">Read more</a>]]></description>
+										<content:encoded><![CDATA[
+<h2>What is a Full Node?</h2>
+
+
+
+<p>A full node is a program that fully validates transactions and blocks. Almost all full nodes also help the network by accepting transactions and blocks from other full nodes, validating those transactions and blocks, and then relaying them to further full nodes.</p>
+
+
+
+<h2>Minimum Requirements</h2>
+
+
+
+<p>Bobcoin Core full nodes have certain requirements. If you try running a node on weak hardware, it may work—but you’ll likely spend more time dealing with issues. If you can meet the following requirements, you’ll have an easy-to-use node.</p>
+
+
+
+<ul><li>Desktop or laptop hardware running recent versions of Windows, Mac OS X, or Linux.</li><li>7 gigabytes of free disk space, accessible at a minimum read/write speed of 100 MB/s.</li><li>2 gigabytes of memory (RAM)</li><li>A broadband Internet connection with upload speeds of at least 400 kilobits (50 kilobytes) per second</li><li>An unmetered connection, a connection with high upload limits, or a connection you regularly monitor to ensure it doesn’t exceed its upload limits. It’s common for full nodes on high-speed connections to use 200 gigabytes upload or more a month. Download usage is around 20 gigabytes a month, plus around an additional 340 gigabytes the first time you start your node.</li><li>6 hours a day that your full node can be left running. (You can do other things with your computer while running a full node.) More hours would be better, and best of all would be if you can run your node continuously.</li><li><strong>Note:</strong> many operating systems today (Windows, Mac, and Linux) enter a low-power mode after the screensaver activates, slowing or halting network traffic. This is often the default setting on laptops and on all Mac OS X laptops and desktops. Check your screensaver settings and disable automatic “sleep” or “suspend” options to ensure you support the network whenever your computer is running.</li></ul>
+
+
+
+<h2>Possible Obsticales</h2>
+
+
+
+<ul><li><strong>Legal:</strong> The use of cryptocurrencies are prohibited or restricted in some areas.</li><li><strong>Bandwidth limits</strong>: Some Internet plans will charge an additional amount for any excess upload bandwidth used that isn’t included in the plan. Worse, some providers may terminate your connection without warning because of overuse. We advise that you check whether your Internet connection is subjected to such limitations and monitor your bandwidth use so that you can stop Bobcoin Core before you reach your upload limit.</li><li><strong>Anti-Virus</strong>: Some anti-virus programs quarantine the Bobcoin, making it more difficult to run Bobcoin Core. This problem mostly affects computers running Windows.</li></ul>
+
+
+
+<h2>Initial Block Download</h2>
+
+
+
+<p>Initial block download refers to the process where nodes synchronize themselves to the network by downloading blocks that are new to them. This will happen when a node is far behind the tip of the best block chain. In the process of IBD, a node does not accept incoming transactions nor request mempool transactions.</p>
+
+
+
+<p>If you are trying to set up a new node following the instructions below, you will go through the IBD process at the first run, and it may take a considerable amount of time since a new node has to download the entire block chain. During the download, there could be a high usage for the network and CPU (since the node has to verify the blocks downloaded), and the client will take up an increasing amount of storage space (<a href="https://bitcoin.org/en/full-node#reduce-storage">reduce storage</a> provides more details on reducing storage).</p>
+
+
+
+<p>Before the node finishes, you will not be able to see a new transaction related to your account until the client has caught up to the block containing that transaction. So your wallet may not count new payments/spendings into the balance.</p>
+
+
+
+<p>If you are using Bobcoin Core GUI, you can monitor the progress of IBD in the status bar (left bottom corner).</p>
+
+
+
+<figure class="wp-block-image size-full"><img width="947" height="648" src="./../wp-content/uploads/2022/02/IDB.png" alt="" class="wp-image-428" srcset="./../wp-content/uploads/2022/02/IDB.png 947w, ./../wp-content/uploads/2022/02/IDB-300x205.png 300w, ./../wp-content/uploads/2022/02/IDB-768x526.png 768w" sizes="(max-width: 947px) 100vw, 947px" /></figure>
+
+
+
+<h2>Linux Instructions</h2>
+
+
+
+<p>There is no binaries for mainstream linux distributions. Instead, you are going to be compiling your own binaries.</p>
+
+
+
+<p>If you are a seasoned linux user or want to build for unix, you may want to look at the <a rel="noreferrer noopener" href="https://github.com/TheKingLol/bobcoin/blob/main/doc/build-unix.md" target="_blank">build notes</a>.</p>
+
+
+
+<p><strong>Dependency Build Instructions: Ubuntu &amp; Debian</strong></p>
+
+
+
+<p>Build requirements:</p>
+
+
+
+<pre class="wp-block-code"><code>sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils</code></pre>
+
+
+
+<p>Options when installing required Boost library files:</p>
+
+
+
+<ol><li>On at least Ubuntu 14.04+ and Debian 7+ there are generic names for the individual boost development packages, so the following can be used to only install necessary parts of boost:</li></ol>
+
+
+
+<pre class="wp-block-code"><code> sudo apt-get install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev</code></pre>
+
+
+
+<p>2. If that doesn&#8217;t work, you can install all boost development packages with:</p>
+
+
+
+<pre class="wp-block-code"><code> sudo apt-get install libboost-all-dev</code></pre>
+
+
+
+<p>BerkeleyDB is required for the wallet.</p>
+
+
+
+<p><strong>For Ubuntu only:</strong> db4.8 packages are available <a href="https://launchpad.net/~bitcoin/+archive/bitcoin">here</a>. You can add the repository and install using the following commands:</p>
+
+
+
+<pre class="wp-block-code"><code>sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:bitcoin/bitcoin
+sudo apt-get update
+sudo apt-get install libdb4.8-dev libdb4.8++-dev</code></pre>
+
+
+
+<p>Ubuntu and Debian have their own libdb-dev and libdb++-dev packages, but these will install BerkeleyDB 5.1 or later, which break binary wallet compatibility with the distributed executables which are based on BerkeleyDB 4.8. If you do not care about wallet compatibility, pass <code><em>--with-incompatible-bdb</em></code> to configure.</p>
+
+
+
+<p>See the section &#8220;Disable-wallet mode&#8221; to build Bobcoin Core without wallet.</p>
+
+
+
+<p>Optional (see &#8211;with-miniupnpc and &#8211;enable-upnp-default):</p>
+
+
+
+<pre class="wp-block-code"><code>sudo apt-get install libminiupnpc-dev</code></pre>
+
+
+
+<p>ZMQ dependencies (provides ZMQ API 4.x):</p>
+
+
+
+<pre class="wp-block-code"><code>sudo apt-get install libzmq3-dev</code></pre>
+
+
+
+<p>Once you have all the required dependencies installed, run</p>
+
+
+
+<pre class="wp-block-code"><code>./autogen.sh
+./configure
+make
+make install # optional</code></pre>
+
+
+
+<p>This will build bobcoin-qt as well if the dependencies are met.</p>
+
+
+
+<p>When you have finished compiling run</p>
+
+
+
+<pre class="wp-block-code"><code>cd src
+strip bobcoind
+sudo cp ~/bobcoin/src/bobcoind &lt;enter directory to paste></code></pre>
+
+
+
+<p>Now run <em>./bobcoind</em> in the terminal. Hopefully, it should sync with the blockchain.</p>
+
+
+
+<p>In theory, the Bobcoin daemon we started should keep running forever. Things can go wrong: The computer could run out of memory, causing the daemon software to crash, the computer could be rebooted by accident or because of some power outage etc… You don’t want to have to keep monitoring your Bobcoin node to see if it’s gone down, so let’s program the system to try to restart it automatically, every hour using crontab. If it’s already running, nothing will happen (the command will fail, but that’s OK).</p>
+
+
+
+<pre class="wp-block-code"><code>sudo apt-get install cron
+crontab -e
+@hourly &lt;path to daemon>/bobcoind -daemon</code></pre>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="1011" height="641" src="./../wp-content/uploads/2022/02/cronie.png" alt="" class="wp-image-430" srcset="./../wp-content/uploads/2022/02/cronie.png 1011w, ./../wp-content/uploads/2022/02/cronie-300x190.png 300w, ./../wp-content/uploads/2022/02/cronie-768x487.png 768w" sizes="(max-width: 1011px) 100vw, 1011px" /></figure>
+
+
+
+<h2>Windows</h2>
+
+
+
+<p>Go to <a href="https://github.com/TheKingLol/bobcoin/releases">releases</a> to download for windows</p>
+
+
+
+<p>After downloading the file to your desktop or your Downloads folder (<code>C:\Users\&lt;YOUR USER NAME>\Downloads</code>), run it by double-clicking its icon. Windows will ask you to confirm that you want to run it. Click Yes and the Bobcoin installer will start. It’s a typical Windows installer, and it will guide you through the decisions you need to make about where to install Bobcoin Core.</p>
+
+
+
+<p>Bobcoin Core GUI will begin to download the block chain. This step will take at least several days, and it may take much more time on a slow Internet connection or with a slow computer. During the download, Bobcoin Core will use a significant part of your connection bandwidth. You can stop Bobcoin Core at any time by closing it; it will resume from the point where it stopped the next time you start it.</p>
+
+
+
+<p>After download is complete, you may use Bobcoin Core as your wallet or you can just let it run to help support the Bobcoin network.</p>
+
+
+
+<p><strong>Warning:</strong> to prevent data corruption, do not force shutdown of your computer from the Windows shutdown screen when you have Bobcoin Core running.</p>
+
+
+
+<h2>Network Configurations</h2>
+
+
+
+<p>If you want to support the Bobcoin network, you must allow inbound connections.</p>
+
+
+
+<p>When Bobcoin Core starts, it establishes 8 outbound connections to other full nodes so it can download the latest blocks and transactions. If you just want to use your full node as a wallet, you don’t need more than these 8 connections—but if you want to support other full nodes on the network, you must allow inbound connections.</p>
+
+
+
+<p>Servers connected directly to the Internet usually don’t require any special configuration. You can use the testing instructions below to confirm your server-based node accepts inbound connections.</p>
+
+
+
+<p>Home connections are usually filtered by a router or modem. Bobcoin Core will request your router automatically configure itself to allow inbound connections to Bobcoin’s port, port 9718. Unfortunately many routers don’t allow automatic configuration, so you must manually configure your router. You may also need to configure your firewall to allow inbound connections to port 9718.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../running-a-full-node/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
 </rss>
